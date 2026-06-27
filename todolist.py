@@ -4,11 +4,24 @@ from datetime import datetime
 def userChoice(choice, tasks):
     # TODO: Implement the logic based on the 'choice' parameter
     # 1. Add Task: get task_name, deadline, call add_task()
+    if choice==1:
+        task_name=input("Enter task name: ")
+        deadline=input("Enter deadline (DD-MM-YY): ")
+        add_task(tasks,task_name,deadline)
     # 2. Delete Task: get task_number, call delete_task()
+    elif choice==2:
+        task_number=int(input("Enter a task number to delete: "))
+        delete_task(tasks,task_number)
+    elif choice==3:
+        display_tasks(tasks)
+    elif choice== 4:
+        return ("Exiting application. Goodbye!")
+    else:
+        print("Invalid choice!\n")
     # 3. Display Tasks: call display_tasks()
     # 4. Exit: return "Exiting application. Goodbye!"
     # Else: print "Invalid choice!"
-    pass
+
 # --- END OF FUNCTION TO IMPLEMENT ---
 
 
