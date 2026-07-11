@@ -19,13 +19,12 @@ def get_python_questions():
          "options": ["A) 5", "B) 6", "C) 7", "D) Error"], "answer": "B"}
     ]
 
-
 def countdown_timer():
     print("\nYou have 10 seconds to think...")
     for i in range(10, 0, -1):
-        print(f"\rTime left: {i} seconds", end="")
+        print(f"\rTime left: {i} seconds ", end="")
         time.sleep(1)
-    print("\nTime's up!\n")
+    print("\n")
 
 
 def display_question(question_data, question_number):
@@ -34,31 +33,53 @@ def display_question(question_data, question_number):
     for option in question_data["options"]:
         print(option)
 
-# Task: Implement this function
 def get_user_answer():
-    user_answer=input("Now Enter your answer (A,B,C,D):").strip().upper()
-    if user_answer in ["A","B","C","D"]:
+    user_answer = input("Now enter your answer (A, B, C, D): ").strip().upper()
+    if user_answer in ["A", "B", "C", "D"]:
         return user_answer
     else:
         return None
+    
 
+#Task: Implement this function
+def check_answer(user_answer, correct_answer):
+    #-------------------------------write your code here----------------------------------
+    user_answer=get_user_answer()
+    if user_answer==correct_answer:
+        print("Answer is correct!")
+        return 1
+    else:
+        print(f"Your answer is wrong! The correct answer is {correct_answer}.")
+        return 0
     
-    
-    # -------------------- WRITE YOUR CODE HERE ----------------------
 
-    
-    
+
+#Task: Implement this function
+def update_score(score, result):
+    if result==1:
+        score+=1
+    return score
+    #-------------------------------write your code here----------------------------------
+
+
+    A
 def play_quiz():
     print("Welcome to Python Quiz!")
     questions = get_python_questions()
     random.shuffle(questions)
     score = 0
+    i = 1
 
-    for i, question in enumerate(questions, start=1):
+    for question in questions:
         display_question(question, i)
         countdown_timer()
         user_answer = get_user_answer()
-        print("your response: ", user_answer)   
+        result =  check_answer(user_answer, question["answer"])
+        score = update_score(score, result)
+        i = i + 1
+
+    print(f"Your final score is: {score} / {len(questions)}")
+    print("Thanks for playing!")
 
 if __name__ == "__main__":
     play_quiz()
