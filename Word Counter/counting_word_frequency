@@ -1,0 +1,40 @@
+import re
+
+def read_input_file(filename):
+    try:
+        file = open(filename, 'r')
+        return file.read().strip()
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' was not found.")
+        return ""
+
+
+def count_words_regex(text):
+    words = re.findall(r'\b\w+\b', text)  # Extract words while ignoring punctuation
+    return words
+
+# Update the code below
+def word_frequency(words):
+    # Take input word whose frequency the user wants to check
+    search_word = input("Enter The word you want the count:").strip()
+    length=len(words)
+    count=0
+    for i in range(length):
+        if words[i]==search_word:
+            count+=1
+    return count,search_word
+
+    # Count the occurrences of the search_word in the words list
+    
+    # return the frequency of the search_word and search_word
+
+
+if __name__ == "__main__":
+    filename = "/Users/vyomvarshney2005/Desktop/codechef python projects/Word Counter/input.txt"
+    text = read_input_file(filename)
+
+    if text:
+        # 'words' is a list of all words in the text
+        words = count_words_regex(text)
+        word_freq, search_word = word_frequency(words)
+        print(word_freq)
