@@ -53,7 +53,6 @@ def check_answer(user_answer, correct_answer):
         return 0
     
 
-
 #Task: Implement this function
 def update_score(score, result):
     if result==1:
